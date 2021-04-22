@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const APP_ID = '749c2515';
+    const APP_KEY = 'cd3e06f1a41bdaf7f582b2a26b16f91b';
+    const url = `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`;
+
+    const getData = async() => {
+        let result = await fetch(url);
+        let data = await result.json();
+
+        console.log(data);
+    }
+
+    return (
+        <div className='App'>
+            <h1 onClick={getData}>Food Searching App</h1>
+        </div>
+    )
 }
 
-export default App;
+export default App
